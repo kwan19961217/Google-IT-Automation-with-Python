@@ -13,7 +13,7 @@ for file in files:
 		with open(file) as f:
 			rows = f.readlines()
 			weight = re.match(r"[\d]+", rows[1])[0]
-			requests.post(url, files={
+			requests.post(url, json={
 				"name": rows[0],
 				"weight": weight,
 				"description": rows[2]": 
