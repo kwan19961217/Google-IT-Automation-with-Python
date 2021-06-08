@@ -2,23 +2,11 @@
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Image
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.units import inch
-import datetime
-import os
 
 
-def generate_report(files):
-	path = "./supplier-data/descriptions/"
-	files = os.listdir(path)
-	
-	report = SimpleDocTemplate("processed.pdf")
+def generate_report(attachment, title, content):
+	report = SimpleDocTemplate(attachment)
 	styles = getSampleStyleSheet()
-	report_title = Paragraph("Processed Update On {}".format(datetime.datetime.today()))
+	report_title = Paragraph(title)
 	line_break = Spacer(1, 2*inch)
-	report_content = [report_title]
-	for file in files:
-		with open(path + file) as f:
-			rows = f.readlines()
-			report_content.append(line_break)
-			report_content.append(rows[0])
-			report_content.append(rows[1])
-	report.build(report_content)
+	report.build([report_title, line_break, content])
