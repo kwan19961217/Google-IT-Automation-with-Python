@@ -7,6 +7,6 @@ from reportlab.lib.units import inch
 def generate_report(attachment, title, content):
 	report = SimpleDocTemplate(attachment)
 	styles = getSampleStyleSheet()
-	report_title = Paragraph(title)
-	line_break = Spacer(1, 2*inch)
-	report.build([report_title, line_break, content])
+	report_title = Paragraph(title, styles["h1"])
+	contents = Paragraph(contents)
+	report.build([report_title, content])
