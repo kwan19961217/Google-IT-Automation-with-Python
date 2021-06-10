@@ -2,7 +2,7 @@
 import requests
 import os
 
-url = "IP Address"
+url = "http://IP Address/upload/"
 path = "./supplier-data/images/"
 
 files = os.listdir(path)
@@ -10,4 +10,4 @@ for file in files:
 	if file.endswith(".jpeg"):
 		print(file)
 		with open(path + file, "rb") as f:
-			requests.post(url, files={"file": f})
+			r = requests.post(url, files={"file": f})
