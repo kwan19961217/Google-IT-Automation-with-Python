@@ -32,21 +32,18 @@ error_subject = {
 
 body = "Please check your system and resolve the issue as soon as possible."
 
-while True:
-	if cpu_check():
-		message = emails.generate_email(sender,recipient,error_subject["cpu"],body)
-		emails.send_email(sender, message)
+if cpu_check():
+	message = emails.generate_email(sender,recipient,error_subject["cpu"],body)
+	emails.send_email(sender, message)
 
-	if disk_space_check():
-		message = emails.generate_email(sender,recipient,error_subject["disk"],body)
-		emails.send_email(sender, message)
+if disk_space_check():
+	message = emails.generate_email(sender,recipient,error_subject["disk"],body)
+	emails.send_email(sender, message)
 
-	if memory_check():
-		message = emails.generate_email(sender,recipient,error_subject["memory"],body)
-		emails.send_email(sender, message)
+if memory_check():
+	message = emails.generate_email(sender,recipient,error_subject["memory"],body)
+	emails.send_email(sender, message)
 
-	if local_host():
-		message = emails.generate_email(sender,recipient,error_subject["local_host"],body)
-		emails.send_email(sender, message)
-
-	time.sleep(60)
+if local_host():
+	message = emails.generate_email(sender,recipient,error_subject["local_host"],body)
+	emails.send_email(sender, message)
