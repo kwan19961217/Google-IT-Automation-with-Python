@@ -4,13 +4,13 @@ import requests
 import re
 
 
-url = "IP Address"
-path ="./supplier-data/description/"
+url = "http://IP Address/fruits/"
+path ="./supplier-data/descriptions/"
 
 files = os.listdir(path)
 for file in files:
-	if file.endwswith(".txt"):
-		with open(file) as f:
+	if file.endswith(".txt"):
+		with open(path + file) as f:
 			rows = f.readlines()
 			weight = re.match(r"[\d]+", rows[1])[0]
 			requests.post(url, json={
